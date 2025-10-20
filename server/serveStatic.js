@@ -10,6 +10,7 @@ export default async function serveStatic(res,cwd) {
 
         const fileDirectory = path.join( cwd, 'data' ,'vansData.json' )
         const data =  JSON.parse(
+
             await fs.readFile(
                 path.join(fileDirectory), "utf-8"
             )
