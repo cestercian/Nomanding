@@ -1,6 +1,6 @@
-import path from "node:path"; import fs from 'node:fs/promises'
-import sendResponse from "./sendResponse.ts";
-
+import path from "node:path";
+import fs from 'node:fs/promises'
+import sendResponse from "./sendResponse.js";
 
 
 export default async function serveStatic(res,cwd) {
@@ -10,7 +10,6 @@ export default async function serveStatic(res,cwd) {
 
         const fileDirectory = path.join( cwd, 'data' ,'vansData.json' )
         const data =  JSON.parse(
-
             await fs.readFile(
                 path.join(fileDirectory), "utf-8"
             )

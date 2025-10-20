@@ -1,5 +1,6 @@
 import http from 'node:http'
-import serveStatic from "./server/serveStatic.js";
+import serveStatic from "./serveStatic.js";
+import sendResponse from "./sendResponse.js";
 
 const PORT = 8000;
 
@@ -9,10 +10,9 @@ const server =
     http.createServer(async (req,res) => {
         if(req.url.startsWith('/vans')){
             return serveStatic(res,__dirname)
+        }else {
+            sendResponse(res,500,'text/html', 'Internal server Error')
         }
-        res.writeHead(200, { "Content-Type": "text/plain" })
-        res.end("Server is running ✅ — Try /vans or /vans/1")
-
     })
 
 server.listen(8000,()=>{console.log(`server is connected to ${PORT} at http://localhost:${PORT}`)})
