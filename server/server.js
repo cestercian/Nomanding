@@ -1,15 +1,14 @@
-import * as http from 'node:http'
-import serveStatic from "./serveStatic.js";
-import sendResponse from "./sendResponse.js";
+import http from 'node:http'
+import serveStatic from "./serveStatic.ts";
+import sendResponse from "./sendResponse.ts";
 
 const PORT = 8000;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = import.meta.dirname
 
 const server =
 
-    http.createServer(async (req:http.IncomingMessage,res:http.ServerResponse):Promise<void> => {
+    http.createServer(async (req,res) => {
 
         if(req.url.startsWith('/vans')){
             return serveStatic(res,__dirname)
