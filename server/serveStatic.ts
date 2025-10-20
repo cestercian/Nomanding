@@ -1,8 +1,9 @@
-import path from "node:path";
-import fs from 'node:fs/promises'
+import * as path from "node:path";
+import * as fs from 'node:fs/promises'
 import sendResponse from "./sendResponse.js";
+import {ServerResponse} from "node:http";
 
-export default async function serveStatic(res,cwd) {
+export default async function serveStatic(res:ServerResponse,cwd:string): Promise<void> {
 
     console.log('serving static')
 
@@ -18,6 +19,6 @@ export default async function serveStatic(res,cwd) {
 
     }catch (e) {
         console.log(e)
-        return []
+        sendResponse(res, 500, 'text/html', 'Internal Server Error')
     }
 }

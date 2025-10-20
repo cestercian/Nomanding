@@ -1,6 +1,6 @@
 import http from 'node:http'
-import serveStatic from "./serveStatic.js";
-import sendResponse from "./sendResponse.js";
+import serveStatic from "./serveStatic.ts";
+import sendResponse from "./sendResponse.ts";
 
 const PORT = 8000;
 
