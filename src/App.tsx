@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import type {JSX} from "react";
 import Home from "./pages/Home"
 import About from "./pages/About"
 
-function App() {
+function App() :JSX.Element {
     return (
         <BrowserRouter>
             <header>

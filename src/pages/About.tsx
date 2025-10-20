@@ -1,7 +1,8 @@
 import bgImg from "../assets/images/about-hero.png"
 import { Link } from "react-router-dom"
+import type {JSX} from "react";
 
-export default function About() {
+export default function About():JSX.Element {
     return (
         <div className="about-page-container">
             <img src={bgImg} className="about-hero-image" alt={"ManWithAVan"} />

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
+import type {JSX} from "react";
 
-export default function Home() {
+export default function Home():JSX.Element {
     return (
         <div className="home-container">
             <h1>You got the travel plans, we got the travel vans.</h1>
