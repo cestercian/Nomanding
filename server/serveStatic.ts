@@ -9,10 +9,10 @@ export default async function serveStatic(res:ServerResponse,cwd:string): Promis
 
     try{
 
-        const fileDirectory = path.join( cwd, 'data' ,'vansData.json' )
+        const fileDirectory = path.join( cwd, '..', 'data' ,'vansData.json' )
         const data =  JSON.parse(
             await fs.readFile(
-                path.join(fileDirectory), "utf-8"
+                fileDirectory, "utf-8"
             )
         )
         sendResponse(res, 200,'application/json', JSON.stringify(data))
