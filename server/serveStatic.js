@@ -2,8 +2,8 @@ import path from "node:path";
 import fs from 'node:fs/promises'
 import sendResponse from "./sendResponse.js";
 
-
 export default async function serveStatic(res,cwd) {
+
     console.log('serving static')
 
     try{
