@@ -1,5 +1,5 @@
 import path from "node:path"; import fs from 'node:fs/promises'
-import sendResponse from "./sendResponse.js";
+import sendResponse from "./sendResponse.ts";
 
 
 
@@ -14,7 +14,7 @@ export default async function serveStatic(res,cwd) {
                 path.join(fileDirectory), "utf-8"
             )
         )
-        sendResponse(res, 200,'appl')
+        sendResponse(res, 200,'application/json', JSON.stringify(data))
 
     }catch (e) {
         console.log(e)
