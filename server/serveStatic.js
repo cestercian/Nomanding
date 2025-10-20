@@ -1,14 +1,17 @@
-import { vansData } from "../vansData.json";
+import path from "node:path"; import fs from 'node:fs/promises'
 
-export default async function serveStatic(req, res, cwd) {
-    console.log("Serving static /vans route...");
 
-    try {
-        res.writeHead(200, { "Content-Type": "application/json" });
-        res.end(JSON.stringify(vansData));
-    } catch (e) {
-        console.error(e);
-        res.writeHead(500, { "Content-Type": "application/json" });
-        res.end(JSON.stringify({ error: "Failed to serve data" }));
-    }
-}
+
+export default async function serveStatic(cwd) {
+    console.log('serving static')
+    try{
+
+        const fileDirectory = path.join( cwd, 'data' ,'vansData.json' )
+        return JSON.parse(
+            await fs.readFile(
+                path.join(fileDirectory),
+                "utf-8")
+        )
+    }catch (e) {
+        console.log(e)
+        return [] } }
