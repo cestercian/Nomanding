@@ -19,7 +19,10 @@ export default function VanDetails():JSX.Element {
     useEffect(function (){
         fetch(`http://localhost:8000/api/vans/${id}`)
             .then( res => res.json())
-            .then( (vanData:Van) => setVans(vanData))
+            .then( (vanData:Van[]) => {
+                const selectedVan :Van|null = vanData.find( v => v.id === id ) || null
+                setVans(selectedVan)
+            })
 
     },[id])
 
