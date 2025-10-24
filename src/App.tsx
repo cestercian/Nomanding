@@ -3,6 +3,7 @@ import type {JSX} from "react";
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Vans from "./pages/Vans.tsx";
+import VanDetails from "./pages/VanDetails.tsx";
 
 
 function App() :JSX.Element {
@@ -19,6 +20,7 @@ function App() :JSX.Element {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/vans" element={<Vans />} />
+                <Route path="/vans/:id" element={<VanDetails/>}></Route>
             </Routes>
         </BrowserRouter>
     )
