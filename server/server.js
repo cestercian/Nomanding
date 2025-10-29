@@ -1,5 +1,5 @@
 import http from "node:http";
-import serveStatic from "./serveStatic.js";
+import serveData from "./serveData.ts";
 import sendResponse from "./sendResponse.js";
 
 const PORT = 8000;
@@ -20,7 +20,7 @@ const server = http.createServer(async (req, res) => {
         }
 
         if (req.url.startsWith("/vans") || req.url.startsWith("/api")) {
-            return serveStatic(res, __dirname);
+            return serveData(res, __dirname);
         } else {
             sendResponse(res, 404, "text/html", "Not Valid API route");
         }
