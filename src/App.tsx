@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import type {JSX} from "react";
 import Home from "./pages/Home"
-import About from "./pages/About"
-import Vans from "./pages/Vans.tsx";
-import VanDetails from "./pages/VanDetails.tsx";
+import About from "./pages/About/About.tsx"
+import Vans from "./pages/vans/Vans.tsx";
+import VanDetails from "./pages/vans/VanDetails.tsx";
 import Layout from "./components/Layout.tsx";
 
 
