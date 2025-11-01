@@ -3,7 +3,7 @@ import * as fs from 'node:fs/promises'
 import sendResponse from "./sendResponse.js";
 import {ServerResponse} from "node:http";
 
-export default async function serveStatic(res:ServerResponse,cwd:string): Promise<void> {
+export default async function serveData(res:ServerResponse, cwd:string): Promise<void> {
 
     console.log('serving static')
 
