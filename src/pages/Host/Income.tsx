@@ -1,3 +1,3 @@
 export default function Income() {
-    return null;
+    return ("Income");
 }
