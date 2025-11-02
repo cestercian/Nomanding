@@ -7,6 +7,7 @@ const PORT = 8000;
 const __dirname = import.meta.dirname;
 
 const server = http.createServer(async (req, res) => {
+
         if (req.method === "OPTIONS") {
             res.statusCode = 204;
             res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");

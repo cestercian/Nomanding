@@ -5,6 +5,9 @@ import About from "./pages/About/About.tsx"
 import Vans from "./pages/vans/Vans.tsx";
 import VanDetails from "./pages/vans/VanDetails.tsx";
 import Layout from "./components/Layout.tsx";
+import Dashboard from "./pages/Host/Dashboard.tsx";
+import Income from "./pages/Host/Income.tsx";
+import Reviews from "./pages/Host/Reviews.tsx";
 
 
 function App() :JSX.Element {
@@ -16,6 +19,9 @@ function App() :JSX.Element {
                     <Route path="/about" element={<About />} />
                     <Route path="/vans" element={<Vans />} />
                     <Route path="/vans/:id" element={<VanDetails/>} />
+                    <Route path="/host" element={<Dashboard/>} />
+                    <Route path="/host/income" element={<Income />} />
+                    <Route path="/host/reviews" element={<Reviews />} />
                 </Route>
             </Routes>
         </BrowserRouter>
