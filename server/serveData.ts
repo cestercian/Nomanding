@@ -4,11 +4,7 @@ import sendResponse from "./sendResponse.js";
 import {ServerResponse} from "node:http";
 
 export default async function serveData(res:ServerResponse, cwd:string): Promise<void> {
-
-    console.log('serving static')
-
     try{
-
         const fileDirectory = path.join( cwd, '..', 'data' ,'vansData.json' )
         const data =  JSON.parse(
             await fs.readFile(
@@ -16,7 +12,6 @@ export default async function serveData(res:ServerResponse, cwd:string): Promise
             )
         )
         sendResponse(res, 200,'application/json', JSON.stringify(data))
-
     }catch (e) {
         console.log(e)
         sendResponse(res, 500, 'text/html', 'Internal Server Error')
