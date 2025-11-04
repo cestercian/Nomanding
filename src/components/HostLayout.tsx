@@ -22,6 +22,9 @@ export default function HostLayout(){
                     <NavLink to={"/host/reviews"}
                              style ={({ isActive }):React.CSSProperties | undefined => isActive ? activeStyles : undefined }
                     >Reviews</NavLink>
+                    <NavLink to={"/host/vans"}
+                             style ={({ isActive }):React.CSSProperties | undefined => isActive ? activeStyles : undefined }
+                    >vans</NavLink>
                 </nav>
             </header>
             <Outlet/>

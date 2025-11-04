@@ -9,6 +9,7 @@ import Dashboard from "./pages/Host/Dashboard.tsx";
 import Income from "./pages/Host/Income.tsx";
 import Reviews from "./pages/Host/Reviews.tsx";
 import HostLayout from "./components/HostLayout.tsx";
+import HostVans from "./pages/Host/HostVans.tsx";
 
 
 function App() :JSX.Element {
@@ -24,6 +25,7 @@ function App() :JSX.Element {
                         <Route index element={<Dashboard/>}/>
                         <Route path="income" element={<Income/>}/>
                         <Route path="reviews" element={<Reviews/>}/>
+                        <Route path="vans" element={<HostVans/>}/>
                     </Route>
                 </Route>
             </Routes>
