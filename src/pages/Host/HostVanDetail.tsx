@@ -5,20 +5,20 @@ interface HostedVan {
     name : string,
     price : number,
     imageUrl : string,
-    hostId: string
+    id: string
 }
 
 export default function HostVanDetail():JSX.Element {
 
     const {hostId} = useParams<{hostId: string}>()
 
-    const [ hostedVanDetail , setHostedVanDetail ] = useState<HostedVan | null >(null)
+    const [ hostedVanDetail , setHostedVanDetail ] = useState<HostedVan | null>(null)
 
     useEffect(() => {
         fetch('http://localhost:8000/api/vans/')
             .then(res => res.json())
             .then( ( vanData :HostedVan[] ) => {
-                const selectedVanData :HostedVan | null = vanData.find( (v:HostedVan ) => v.hostId === hostId )|| null
+                const selectedVanData :HostedVan | null = vanData.find( (v:HostedVan ) => v.id === hostId )|| null
                 setHostedVanDetail(selectedVanData)
             } )
     }, []);
@@ -29,7 +29,7 @@ export default function HostVanDetail():JSX.Element {
             <h2>{hostedVanDetail.price}</h2>
             <p>{hostedVanDetail.imageUrl}</p>
         </>
-        ) : <></>
+        ) : <h2>Loading...</h2>
 
     return(
         <>
