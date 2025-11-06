@@ -10,6 +10,7 @@ import Income from "./pages/Host/Income.tsx";
 import Reviews from "./pages/Host/Reviews.tsx";
 import HostLayout from "./components/HostLayout.tsx";
 import HostVans from "./pages/Host/HostVans.tsx";
+import HostVanDetail from "./pages/Host/HostVanDetail.tsx";
 
 
 function App() :JSX.Element {
@@ -26,6 +27,7 @@ function App() :JSX.Element {
                         <Route path="income" element={<Income/>}/>
                         <Route path="reviews" element={<Reviews/>}/>
                         <Route path="vans" element={<HostVans/>}/>
+                        <Route path="vans/:hostId" element={<HostVanDetail/>}/>
                     </Route>
                 </Route>
             </Routes>

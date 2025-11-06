@@ -1,12 +1,14 @@
 import {type JSX, useEffect} from "react";
 import * as React from "react";
+import {Link} from "react-router-dom";
 
 
 interface HostedVan {
     name : string,
+    id : string,
     price : number,
     imageUrl : string
-    hostId: number
+    hostId: string
 }
 
 export default function HostVans():JSX.Element {
@@ -17,7 +19,7 @@ export default function HostVans():JSX.Element {
         fetch(`http://localhost:8000/api/vans/`)
             .then(res => res.json())
             .then( (hostedVansData :HostedVan[] ) => {
-                const selectedHostVans : HostedVan[] | [] =  hostedVansData.filter( ( v : HostedVan )  => v.hostId === 123  )
+                const selectedHostVans : HostedVan[] | [] =  hostedVansData.filter( ( v : HostedVan )  => v.hostId === "123"  )
                 setHostedVans (selectedHostVans)
             } )
             .catch((err)=> console.log(err))
@@ -26,11 +28,13 @@ export default function HostVans():JSX.Element {
 
 
     const hostedVansList :JSX.Element[]  = hostedVans.map( (van) => (
-        <>
-            <h1>{van.name}</h1>
-            <h2>{van.price}</h2>
-            <p>{van.imageUrl}</p>
-        </>
+
+            <Link to={`${van.hostId}`} key={`${van.id}`}>
+                <h1>{van.name}</h1>
+                <h2>{van.price}</h2>
+                <p>{van.imageUrl}</p>
+            </Link>
+
     ) )
 
     return (
