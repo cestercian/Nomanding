@@ -17,7 +17,7 @@ export default function VanDetails():JSX.Element {
     const [ van , setVans ] = useState <Van | null> (null)
 
     useEffect(function (){
-        fetch(`http://localhost:8000/api/vans/${id}`)
+        fetch(`http://localhost:8000/api/vans/`)
             .then( res => res.json())
             .then( (vanData:Van[]) => {
                 const selectedVan :Van|null = vanData.find( v => v.id === id ) || null
