@@ -1,5 +1,6 @@
 import {type JSX, useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
+import HostVanDetailLayout from "../../components/HostVanDetailLayout.tsx";
 
 interface HostedVan {
     name : string,
@@ -46,6 +47,7 @@ export default function HostVanDetail():JSX.Element {
                     </div>
                 </div>
             </div>
+            <HostVanDetailLayout/>
         </section>
         ) : <h2>Loading...</h2>
 
