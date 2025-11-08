@@ -13,16 +13,16 @@ export default function HostLayout(){
         <>
             <header>
                 <nav>
-                    <NavLink to={"/host"} end
+                    <NavLink to={"."} end
                              style ={({ isActive }):React.CSSProperties | undefined => isActive ? activeStyles : undefined }
                     >Dashboard</NavLink>
-                    <NavLink to={"/host/income"}
+                    <NavLink to={"income"}
                              style ={({ isActive }):React.CSSProperties | undefined => isActive ? activeStyles : undefined }
                     >Income</NavLink>
-                    <NavLink to={"/host/reviews"}
+                    <NavLink to={"reviews"}
                              style ={({ isActive }):React.CSSProperties | undefined => isActive ? activeStyles : undefined }
                     >Reviews</NavLink>
-                    <NavLink to={"/host/vans"}
+                    <NavLink to={"vans"}
                              style ={({ isActive }):React.CSSProperties | undefined => isActive ? activeStyles : undefined }
                     >Vans</NavLink>
                 </nav>

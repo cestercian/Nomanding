@@ -27,7 +27,8 @@ export default function HostVanDetail():JSX.Element {
     const selectedVanDetail:JSX.Element = hostedVanDetail ? (
         <section>
             <Link
-                to="?"
+                to=".."
+                relative="path"
                 className="back-button"
             >&larr; <span>Back to all vans</span></Link>
 
