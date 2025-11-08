@@ -1,11 +1,12 @@
 import {type JSX, useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 interface HostedVan {
     name : string,
     price : number,
     imageUrl : string,
     id: string
+    type:string
 }
 
 export default function HostVanDetail():JSX.Element {
@@ -18,23 +19,36 @@ export default function HostVanDetail():JSX.Element {
         fetch('http://localhost:8000/api/vans/')
             .then(res => res.json())
             .then( ( vanData :HostedVan[] ) => {
-                const selectedVanData :HostedVan | null = vanData.find( (v:HostedVan ) => v.id === hostId )|| null
+                const selectedVanData:HostedVan|null = vanData.find( (v:HostedVan ) => v.id === hostId )||null
                 setHostedVanDetail(selectedVanData)
             } )
     }, []);
 
     const selectedVanDetail:JSX.Element = hostedVanDetail ? (
-        <>
-            <h1>{hostedVanDetail.name}</h1>
-            <h2>{hostedVanDetail.price}</h2>
-            <p>{hostedVanDetail.imageUrl}</p>
-        </>
+        <section>
+            <Link
+                to="?"
+                className="back-button"
+            >&larr; <span>Back to all vans</span></Link>
+
+            <div className="host-van-detail-layout-container">
+                <div className="host-van-detail">
+                    <img src={hostedVanDetail.imageUrl} alt={'van Image'}/>
+                    <div className="host-van-detail-info-text">
+                        <i
+                            className={`van-type van-type-${hostedVanDetail.type}`}
+                        >
+                            {hostedVanDetail.type}
+                        </i>
+                        <h3>{hostedVanDetail.name}</h3>
+                        <h4>${hostedVanDetail.price}/day</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
         ) : <h2>Loading...</h2>
 
     return(
-        <>
-            {selectedVanDetail}
-        </>
-
+        selectedVanDetail
     )
 }
