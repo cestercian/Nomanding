@@ -12,7 +12,7 @@ import HostLayout from "./components/HostLayout.tsx";
 import HostVans from "./pages/Host/HostVans.tsx";
 import HostVanDetail from "./pages/Host/HostVanDetail.tsx";
 import HostVanPricing from "./pages/Host/VanDetails/HostVanPricing.tsx";
-import HostVanDetails from "./pages/Host/VanDetails/HostVanDetails.tsx";
+import HostVanInfo from "./pages/Host/VanDetails/HostVanInfo.tsx";
 import HostVanPhotos from "./pages/Host/VanDetails/HostVanPhotos.tsx";
 
 
@@ -31,7 +31,7 @@ function App() :JSX.Element {
                         <Route path="reviews" element={<Reviews/>}/>
                         <Route path="vans" element={<HostVans/>}/>
                         <Route path="vans/:hostId" element={<HostVanDetail/>}>
-                            <Route index element={<HostVanDetails/>}/>
+                            <Route index element={<HostVanInfo/>}/>
                             <Route path="Pricing" element={<HostVanPricing/>}/>
                             <Route path="Photos" element={<HostVanPhotos/>}/>
                         </Route>
