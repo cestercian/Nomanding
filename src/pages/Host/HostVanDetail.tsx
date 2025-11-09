@@ -6,6 +6,7 @@ export interface HostedVan {
     name : string,
     price : number,
     imageUrl : string,
+    description : string,
     id: string
     type:string
 }
