@@ -1,8 +1,8 @@
 import {type JSX, useEffect, useState} from "react";
-import {Link, useParams} from "react-router-dom";
-import HostVanDetailLayout from "../../components/HostVanDetailLayout.tsx";
+import {Link, NavLink, Outlet, useParams} from "react-router-dom";
+import * as React from "react";
 
-interface HostedVan {
+export interface HostedVan {
     name : string,
     price : number,
     imageUrl : string,
@@ -15,6 +15,12 @@ export default function HostVanDetail():JSX.Element {
     const {hostId} = useParams<{hostId: string}>()
 
     const [ hostedVanDetail , setHostedVanDetail ] = useState<HostedVan | null>(null)
+
+    const activeStyles = {
+        fontWeight: "bold",
+        textDecoration: "underline",
+        color: "#161616"
+    }
 
     useEffect(() => {
         fetch('http://localhost:8000/api/vans/')
@@ -47,7 +53,22 @@ export default function HostVanDetail():JSX.Element {
                     </div>
                 </div>
             </div>
-            <HostVanDetailLayout/>
+            <>
+                <header>
+                    <nav>
+                        <NavLink to={"."} end
+                                 style ={({ isActive }):React.CSSProperties | undefined => isActive ? activeStyles : undefined }
+                        >Details</NavLink>
+                        <NavLink to={"Pricing"}
+                                 style ={({ isActive }):React.CSSProperties | undefined => isActive ? activeStyles : undefined }
+                        >Pricing</NavLink>
+                        <NavLink to={"Photos"}
+                                 style ={({ isActive }):React.CSSProperties | undefined => isActive ? activeStyles : undefined }
+                        >Photos</NavLink>
+                    </nav>
+                </header>
+                <Outlet context={hostedVanDetail}/>
+            </>
         </section>
         ) : <h2>Loading...</h2>
 
