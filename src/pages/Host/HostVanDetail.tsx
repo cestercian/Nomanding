@@ -54,22 +54,20 @@ export default function HostVanDetail():JSX.Element {
                     </div>
                 </div>
             </div>
-            <>
-                <header>
-                    <nav>
-                        <NavLink to={"."} end
-                                 style ={({ isActive }):React.CSSProperties | undefined => isActive ? activeStyles : undefined }
-                        >Details</NavLink>
-                        <NavLink to={"Pricing"}
-                                 style ={({ isActive }):React.CSSProperties | undefined => isActive ? activeStyles : undefined }
-                        >Pricing</NavLink>
-                        <NavLink to={"Photos"}
-                                 style ={({ isActive }):React.CSSProperties | undefined => isActive ? activeStyles : undefined }
-                        >Photos</NavLink>
-                    </nav>
-                </header>
-                <Outlet context={hostedVanDetail}/>
-            </>
+            <header>
+                <nav>
+                    <NavLink to={"."} end
+                             style={({isActive}): React.CSSProperties | undefined => isActive ? activeStyles : undefined}
+                    >Details</NavLink>
+                    <NavLink to={"Pricing"}
+                             style={({isActive}): React.CSSProperties | undefined => isActive ? activeStyles : undefined}
+                    >Pricing</NavLink>
+                    <NavLink to={"Photos"}
+                             style={({isActive}): React.CSSProperties | undefined => isActive ? activeStyles : undefined}
+                    >Photos</NavLink>
+                </nav>
+            </header>
+            <Outlet context={hostedVanDetail}/>
         </section>
         ) : <h2>Loading...</h2>
 
