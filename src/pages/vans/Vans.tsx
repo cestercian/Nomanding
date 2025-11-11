@@ -29,8 +29,9 @@ export default function Vans():JSX.Element {
 
     },[])
 
-    const displayedVans : Van[] = typeFilter ?
-        vansData.filter( van => van.type === typeFilter ) : vansData
+    const displayedVans : Van[] = typeFilter
+        ? vansData.filter( van => van.type === typeFilter )
+        : vansData
 
     const vanElements :JSX.Element[] = displayedVans.map((van: Van) => (
         <div key={van.id} className="van-tile" >
