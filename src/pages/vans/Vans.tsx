@@ -1,6 +1,6 @@
 import  {type JSX} from 'react'
 import * as React from "react";
-import {Link} from "react-router-dom";
+import {Link, useSearchParams} from "react-router-dom";
 
 
 interface Van {
@@ -17,6 +17,10 @@ export default function Vans():JSX.Element {
 
     const [vansData, setVansData ] = React.useState<Van[]>([])
 
+    const [ searchParams ] = useSearchParams()
+
+    const typeFilter = searchParams.get("type")
+
     React.useEffect(function () {
 
         fetch('http://localhost:8000/vans')
@@ -25,7 +29,10 @@ export default function Vans():JSX.Element {
 
     },[])
 
-    const vanElements :JSX.Element[] = vansData.map((van: Van) => (
+    const displayedVans : Van[] = typeFilter ?
+        vansData.filter( van => van.type === typeFilter ) : vansData
+
+    const vanElements :JSX.Element[] = displayedVans.map((van: Van) => (
         <div key={van.id} className="van-tile" >
             <Link to={`/vans/${van.id}`}>
                 <img src={van.imageUrl} alt={van.name}/>
@@ -37,7 +44,6 @@ export default function Vans():JSX.Element {
             </Link>
         </div>
     ))
-
 
     return(
         <div className="van-list-container">
