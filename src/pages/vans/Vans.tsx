@@ -49,6 +49,10 @@ export default function Vans():JSX.Element {
     return(
         <div className="van-list-container">
             <h1>Explore our van options</h1>
+            <Link to="?type=simple">SIMPLE</Link>
+            <Link to="?type=luxury">luxury</Link>
+            <Link to="?type=rugged">rugged</Link>
+            <Link to=".">Clear Filter</Link>
             <div className="van-list">
                 {vanElements}
             </div>
