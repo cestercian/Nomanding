@@ -49,10 +49,12 @@ export default function Vans():JSX.Element {
     return(
         <div className="van-list-container">
             <h1>Explore our van options</h1>
-            <Link to="?type=simple" className="van-type simple " >SIMPLE</Link>
-            <Link to="?type=luxury" className="van-type luxury " >luxury</Link>
-            <Link to="?type=rugged" className="van-type rugged " >rugged</Link>
-            <Link to="." className="van-type clear-filters " >Clear Filter</Link>
+            <div className="van-list-filter-buttons">
+                <Link to="?type=simple" className="van-type simple " >Simple</Link>
+                <Link to="?type=luxury" className="van-type luxury " >Luxury</Link>
+                <Link to="?type=rugged" className="van-type rugged " >Rugged</Link>
+                <Link to="." className="van-type clear-filters " >Clear Filter</Link>
+            </div>
             <div className="van-list">
                 {vanElements}
             </div>
