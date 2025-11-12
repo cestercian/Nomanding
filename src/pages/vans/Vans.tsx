@@ -53,8 +53,9 @@ export default function Vans():JSX.Element {
                 <button onClick={()=>{ setSearchParams({ type:"simple" })}} className="van-type simple">Simple</button>
                 <button onClick={()=>{ setSearchParams({ type:"luxury" })}} className="van-type luxury">Luxury</button>
                 <button onClick={()=>{ setSearchParams({ type:"rugged" })}} className="van-type rugged">Rugged</button>
-                { typeFilter ? (<button onClick={() => {
-                }} className="van-type clear-filters">Clear Filter</button>) : null }
+                { typeFilter
+                    ? (<button onClick={()=>{setSearchParams()}} className="van-type clear-filters">Clear Filter</button>)
+                    : null}
             </div>
             <div className="van-list">
                 {vanElements}
