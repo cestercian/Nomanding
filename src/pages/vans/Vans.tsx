@@ -24,7 +24,7 @@ export default function Vans():JSX.Element {
     React.useEffect(function () {
 
         fetch('http://localhost:8000/vans')
-            .then( res => res.json() )
+            .then( res => res.json() as Promise<Van[]>)
             .then( (resData: Van[]) =>  setVansData(resData) )
 
     },[])
@@ -35,7 +35,7 @@ export default function Vans():JSX.Element {
 
     const vanElements :JSX.Element[] = displayedVans.map((van: Van) => (
         <div key={van.id} className="van-tile" >
-            <Link to={`/vans/${van.id}`}>
+            <Link to={`${van.id}`}>
                 <img src={van.imageUrl} alt={van.name}/>
                 <div className="van-info">
                     <h3>{van.name}</h3>
@@ -50,12 +50,18 @@ export default function Vans():JSX.Element {
         <div className="van-list-container">
             <h1>Explore our van options</h1>
             <div className="van-list-filter-buttons">
-                <button onClick={()=>{ setSearchParams({ type:"simple" })}} className="van-type simple">Simple</button>
-                <button onClick={()=>{ setSearchParams({ type:"luxury" })}} className="van-type luxury">Luxury</button>
-                <button onClick={()=>{ setSearchParams({ type:"rugged" })}} className="van-type rugged">Rugged</button>
+                <button
+                    onClick={()=>{ setSearchParams({ type:"simple" })}}
+                    className={`van-type simple ${typeFilter === "selected" ? "selected" : ""}`}>Simple</button>
+                <button
+                    onClick={()=>{ setSearchParams({ type:"luxury" })}}
+                    className={`van-type luxury ${typeFilter === "luxury" ? "selected" : ""}`}>Luxury</button>
+                <button
+                    onClick={()=>{ setSearchParams({ type:"rugged" })}}
+                    className={`van-type rugged ${typeFilter === "rugged" ? "selected" : ""}`}>Rugged</button>
                 { typeFilter
                     ? (<button onClick={()=>{setSearchParams()}} className="van-type clear-filters">Clear Filter</button>)
-                    : null}
+                    : null }
             </div>
             <div className="van-list">
                 {vanElements}

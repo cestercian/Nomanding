@@ -54,7 +54,6 @@ export default function HostVans():JSX.Element {
                         <section>
                             {hostedVansList}
                         </section>
-
                     ) : (
                         <h2>Loading...</h2>
                     )
