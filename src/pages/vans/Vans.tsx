@@ -17,7 +17,7 @@ export default function Vans():JSX.Element {
 
     const [vansData, setVansData ] = React.useState<Van[]>([])
 
-    const [ searchParams ] = useSearchParams()
+    const [ searchParams , setSearchParams ] = useSearchParams()
 
     const typeFilter = searchParams.get("type")
 
@@ -50,10 +50,10 @@ export default function Vans():JSX.Element {
         <div className="van-list-container">
             <h1>Explore our van options</h1>
             <div className="van-list-filter-buttons">
-                <Link to="?type=simple" className="van-type simple " >Simple</Link>
-                <Link to="?type=luxury" className="van-type luxury " >Luxury</Link>
-                <Link to="?type=rugged" className="van-type rugged " >Rugged</Link>
-                <Link to="." className="van-type clear-filters " >Clear Filter</Link>
+                <button onClick={()=>{ setSearchParams({ type:"simple" })}} className="van-type simple">Simple</button>
+                <button onClick={()=>{ setSearchParams({ type:"luxury" })}} className="van-type luxury">Luxury</button>
+                <button onClick={()=>{ setSearchParams({ type:"rugged" })}} className="van-type rugged">Rugged</button>
+                <button onClick={()=>{}} className="van-type clear-filters">Clear Filter</button>
             </div>
             <div className="van-list">
                 {vanElements}
