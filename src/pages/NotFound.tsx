@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
+import type {JSX} from "react";
 
-export default function NotFound() {
+export default function NotFound():JSX.Element {
     return (
         <div className="not-found-container">
             <h1>Sorry, the page you were looking for was not found.</h1>
