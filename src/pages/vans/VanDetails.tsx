@@ -1,5 +1,5 @@
 import {useEffect, useState, type JSX} from "react";
-import {Link, useParams} from "react-router-dom";
+import {Link, useLocation, useParams} from "react-router-dom";
 
 
 interface Van {
@@ -14,22 +14,22 @@ interface Van {
 export default function VanDetails():JSX.Element {
 
     const {id} = useParams<{id : string}>()
+    const location = useLocation()
     const [ van , setVans ] = useState <Van | null> (null)
 
     useEffect(function (){
         fetch(`http://localhost:8000/api/vans/`)
-            .then( res => res.json())
+            .then( res => res.json() as Promise<Van[]>)
             .then( (vanData:Van[]) => {
-                const selectedVan :Van|null = vanData.find( v => v.id === id ) || null
+                const selectedVan :Van|null = vanData.find( (v:Van) => v.id === id ) || null
                 setVans(selectedVan)
             })
-
     },[id])
 
     return(
         <div className="van-detail-container">
             <Link
-                to=".."
+                to={`..${location.state?.search}`}
                 relative="path"
                 className="back-button"
             >&larr; <span>Back to all vans</span></Link>

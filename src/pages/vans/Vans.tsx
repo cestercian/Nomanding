@@ -24,7 +24,7 @@ export default function Vans():JSX.Element {
     React.useEffect(function () {
 
         fetch('http://localhost:8000/vans')
-            .then( res => res.json() as Promise<Van[]>)
+            .then( res => res.json() as Promise<Van[]> )
             .then( (resData: Van[]) =>  setVansData(resData) )
 
     },[])
@@ -35,7 +35,7 @@ export default function Vans():JSX.Element {
 
     const vanElements :JSX.Element[] = displayedVans.map((van: Van) => (
         <div key={van.id} className="van-tile" >
-            <Link to={`${van.id}`}>
+            <Link to={`${van.id}`} state={{ search : `?${searchParams.toString()}` }}>
                 <img src={van.imageUrl} alt={van.name}/>
                 <div className="van-info">
                     <h3>{van.name}</h3>
