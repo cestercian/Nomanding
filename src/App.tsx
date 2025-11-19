@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import type {JSX} from "react";
 import Home from "./pages/Home"
 import About from "./pages/About/About.tsx"
+import NotFound from "./pages/NotFound.tsx";
 import Vans from "./pages/vans/Vans.tsx";
 import VanDetails from "./pages/vans/VanDetails.tsx";
 import Layout from "./components/Layout.tsx";
@@ -36,6 +37,7 @@ function App() :JSX.Element {
                             <Route path="Photos" element={<HostVanPhotos/>}/>
                         </Route>
                     </Route>
+                    <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>
         </BrowserRouter>
