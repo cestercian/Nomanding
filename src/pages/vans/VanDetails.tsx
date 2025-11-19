@@ -26,13 +26,16 @@ export default function VanDetails():JSX.Element {
             })
     },[id])
 
+    const search : string =  location.state?.search
+    const typeOfVan =  new URLSearchParams(search).get("type") || "all"
+
     return(
         <div className="van-detail-container">
             <Link
-                to={`..${location.state?.search}`}
+                to={`..${search}`}
                 relative="path"
                 className="back-button"
-            >&larr; <span>Back to all vans</span></Link>
+            >&larr; <span>{`Back to ${typeOfVan} vans`}</span></Link>
             {van ? (
                 <div className="van-detail">
                     <img src={van.imageUrl} alt={van.name}/>
