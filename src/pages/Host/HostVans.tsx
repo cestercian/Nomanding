@@ -1,29 +1,22 @@
 import {type JSX, useEffect} from "react";
 import * as React from "react";
 import {Link} from "react-router-dom";
+import getVans from "../../api/api.ts";
+import type {Van} from "../../types/types.ts";
 
 
-interface HostedVan {
-    name : string,
-    id : string,
-    price : number,
-    imageUrl : string
-    hostId: string
-}
 
 export default function HostVans():JSX.Element {
 
-    const [ hostedVans, setHostedVans ] = React.useState<HostedVan[]>([])
+    const [ hostedVans, setHostedVans ] = React.useState<Van[]>([])
 
-    useEffect(function () {
-        fetch(`http://localhost:8000/api/vans/`)
-            .then(res => res.json())
-            .then( (hostedVansData :HostedVan[] ) => {
-                const selectedHostVans : HostedVan[] | [] =  hostedVansData.filter( ( v : HostedVan )  => v.hostId === "123"  )
+    useEffect( function () {
+        getVans()
+            .then( (hostedVansData :Van[] ) => {
+                const selectedHostVans : Van[] | [] =  hostedVansData.filter( ( v : Van )  => v.hostId === "123"  )
                 setHostedVans (selectedHostVans)
             } )
             .catch((err)=> console.log(err))
-
     },[])
 
 

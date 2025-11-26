@@ -1,6 +1,7 @@
 import  {type JSX} from 'react'
 import * as React from "react";
 import {Link, useSearchParams} from "react-router-dom";
+import getVans from "../../api/api.ts";
 
 
 interface Van {
@@ -22,11 +23,7 @@ export default function Vans():JSX.Element {
     const typeFilter = searchParams.get("type")
 
     React.useEffect(function () {
-
-        fetch('http://localhost:8000/vans')
-            .then( res => res.json() as Promise<Van[]> )
-            .then( (resData: Van[]) =>  setVansData(resData) )
-
+        getVans().then( (resData: Van[]) =>  setVansData(resData) )
     },[])
 
     const displayedVans : Van[] = typeFilter
