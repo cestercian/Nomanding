@@ -1,8 +1,8 @@
-import type {HostedVan} from "../HostVanDetail.tsx";
+import type {HostedVan} from "./HostVanDetail.tsx";
 import {useOutletContext} from "react-router-dom";
 import type {JSX} from "react";
 
-export default function ():JSX.Element {
+export default function HostVanPricing():JSX.Element {
 
     const hostVanDetails : HostedVan | null = useOutletContext()
 

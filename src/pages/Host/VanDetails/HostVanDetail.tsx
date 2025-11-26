@@ -1,7 +1,7 @@
 import {type JSX, useEffect, useState} from "react";
 import {Link, NavLink, Outlet, useParams} from "react-router-dom";
 import * as React from "react";
-import getVans from "../../api/api.ts";
+import getVans from "../../../api/api.ts";
 
 export interface HostedVan {
     name : string,
@@ -30,7 +30,7 @@ export default function HostVanDetail():JSX.Element {
                 const selectedVanData:HostedVan|null = vanData.find( (v:HostedVan ) => v.id === hostId )||null
                 setHostedVanDetail(selectedVanData)
             } )
-    }, []);
+    }, [hostId]);
 
     const selectedVanDetail:JSX.Element = hostedVanDetail ? (
         <section>

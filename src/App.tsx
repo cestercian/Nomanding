@@ -11,7 +11,7 @@ import Income from "./pages/Host/Income.tsx";
 import Reviews from "./pages/Host/Reviews.tsx";
 import HostLayout from "./components/HostLayout.tsx";
 import HostVans from "./pages/Host/HostVans.tsx";
-import HostVanDetail from "./pages/Host/HostVanDetail.tsx";
+import HostVanDetail from "./pages/Host/VanDetails/HostVanDetail.tsx";
 import HostVanPricing from "./pages/Host/VanDetails/HostVanPricing.tsx";
 import HostVanInfo from "./pages/Host/VanDetails/HostVanInfo.tsx";
 import HostVanPhotos from "./pages/Host/VanDetails/HostVanPhotos.tsx";
