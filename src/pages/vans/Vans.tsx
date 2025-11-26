@@ -2,17 +2,10 @@ import {type JSX, useState} from 'react'
 import * as React from "react";
 import {Link, useSearchParams} from "react-router-dom";
 import getVans from "../../api/api.ts";
+import type {Van} from "../../types/types.ts";
 
 
-interface Van {
-    id : string,
-    name : string,
-    price : number,
-    description : string,
-    imageUrl : string,
-    type : string
 
-}
 
 export default function Vans():JSX.Element {
 
