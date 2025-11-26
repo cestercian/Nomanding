@@ -1,4 +1,4 @@
-import  {type JSX} from 'react'
+import {type JSX, useState} from 'react'
 import * as React from "react";
 import {Link, useSearchParams} from "react-router-dom";
 import getVans from "../../api/api.ts";
@@ -22,8 +22,16 @@ export default function Vans():JSX.Element {
 
     const typeFilter = searchParams.get("type")
 
-    React.useEffect(function () {
-        getVans().then( (resData: Van[]) =>  setVansData(resData) )
+    const [ loading , setLoading ] = useState(false)
+
+    React.useEffect( () => {
+        async function loadVans() {
+            setLoading(true)
+            const resData: Van[] = await getVans()
+            setVansData(resData)
+            setLoading(false)
+        }
+        loadVans()
     },[])
 
     const displayedVans : Van[] = typeFilter
@@ -42,6 +50,10 @@ export default function Vans():JSX.Element {
             </Link>
         </div>
     ))
+
+    if(loading){
+        return <h1>Loading....</h1>
+    }
 
     return(
         <div className="van-list-container">
