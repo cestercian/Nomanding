@@ -1,15 +1,7 @@
 import {useEffect, useState, type JSX} from "react";
 import {Link, useLocation, useParams} from "react-router-dom";
-
-
-interface Van {
-    id : string,
-    name : string,
-    price : number,
-    description : string,
-    imageUrl : string,
-    type : string
-}
+import getVans from "../../api/api.ts";
+import type { Van } from "../../types/types.ts"
 
 export default function VanDetails():JSX.Element {
 
@@ -18,12 +10,10 @@ export default function VanDetails():JSX.Element {
     const [ van , setVans ] = useState <Van | null> (null)
 
     useEffect(function (){
-        fetch(`http://localhost:8000/api/vans/`)
-            .then( res => res.json() as Promise<Van[]>)
-            .then( (vanData:Van[]) => {
-                const selectedVan :Van|null = vanData.find( (v:Van) => v.id === id ) || null
-                setVans(selectedVan)
-            })
+        getVans().then(( vanData : Van[]) => {
+            const selectedVans : Van | null = vanData.find((v : Van) => v.id === id ) || null
+            setVans(selectedVans)
+        })
     },[id])
 
     const search : string =  location.state?.search
