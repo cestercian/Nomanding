@@ -20,8 +20,13 @@ export default function Vans():JSX.Element {
     React.useEffect( () => {
         async function loadVans() {
             setLoading(true)
-            const resData: Van[] = await getVans()
-            setVansData(resData)
+            try {
+                const resData: Van[] = await getVans()
+                setVansData(resData)
+            }catch(err) {
+                console.log("There was an error!")
+                console.log(err)
+            }
             setLoading(false)
         }
         loadVans()
