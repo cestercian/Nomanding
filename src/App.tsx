@@ -15,6 +15,7 @@ import HostVanDetail from "./pages/Host/VanDetails/HostVanDetail.tsx";
 import HostVanPricing from "./pages/Host/VanDetails/HostVanPricing.tsx";
 import HostVanInfo from "./pages/Host/VanDetails/HostVanInfo.tsx";
 import HostVanPhotos from "./pages/Host/VanDetails/HostVanPhotos.tsx";
+import Login from "./pages/Login.tsx";
 
 
 function App() :JSX.Element {
@@ -24,6 +25,7 @@ function App() :JSX.Element {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
                     <Route path="about" element={<About />} />
+                    <Route path="login" element={<Login />}/>
                     <Route path="vans" element={<Vans />} />
                     <Route path="vans/:id" element={<VanDetails/>} />
                     <Route path="host" element={<HostLayout/>}>
