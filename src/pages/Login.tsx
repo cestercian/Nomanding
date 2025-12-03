@@ -1,4 +1,5 @@
 import React, {type JSX, useState} from "react";
+import {useLocation} from "react-router-dom";
 
 type LoginFormData = {
     email: string;
@@ -10,6 +11,8 @@ export default function Login(): JSX.Element {
         email: "",
         password: "",
     });
+
+    const location = useLocation()
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
         e.preventDefault();
@@ -24,8 +27,11 @@ export default function Login(): JSX.Element {
         }));
     }
 
+    const message = location.state?.message
+
     return (
         <div className="login-container">
+            <h3>{message}</h3>
             <h1>Sign in to your account</h1>
             <form onSubmit={handleSubmit} className="login-form">
                 <input
