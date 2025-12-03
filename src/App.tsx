@@ -16,6 +16,7 @@ import HostVanPricing from "./pages/Host/VanDetails/HostVanPricing.tsx";
 import HostVanInfo from "./pages/Host/VanDetails/HostVanInfo.tsx";
 import HostVanPhotos from "./pages/Host/VanDetails/HostVanPhotos.tsx";
 import Login from "./pages/Login.tsx";
+import Authentication from "./components/Authentication.tsx";
 
 
 function App() :JSX.Element {
@@ -30,18 +31,21 @@ function App() :JSX.Element {
                     <Route path="vans" element={<Vans />} />
                     <Route path="vans/:id" element={<VanDetails/>} />
 
-                    <Route path="host" element={<HostLayout/>}>
 
-                        <Route index element={<Dashboard/>}/>
-                        <Route path="income" element={<Income/>}/>
-                        <Route path="reviews" element={<Reviews/>}/>
-                        <Route path="vans" element={<HostVans/>}/>
-                        <Route path="vans/:hostId" element={<HostVanDetail/>}>
-                            <Route index element={<HostVanInfo/>}/>
-                            <Route path="Pricing" element={<HostVanPricing/>}/>
-                            <Route path="Photos" element={<HostVanPhotos/>}/>
+                    <Route element={<Authentication/>}>
+                        <Route path="host" element={<HostLayout/>}>
+
+                            <Route index element={<Dashboard/>}/>
+                            <Route path="income" element={<Income/>}/>
+                            <Route path="reviews" element={<Reviews/>}/>
+                            <Route path="vans" element={<HostVans/>}/>
+                            <Route path="vans/:hostId" element={<HostVanDetail/>}>
+                                <Route index element={<HostVanInfo/>}/>
+                                <Route path="Pricing" element={<HostVanPricing/>}/>
+                                <Route path="Photos" element={<HostVanPhotos/>}/>
+                            </Route>
+
                         </Route>
-
                     </Route>
 
                     <Route path="*" element={<NotFound />} />
