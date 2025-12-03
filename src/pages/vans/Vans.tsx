@@ -5,8 +5,6 @@ import getVans from "../../api/api.ts";
 import type {Van} from "../../types/types.ts";
 
 
-
-
 export default function Vans():JSX.Element {
 
     const [vansData, setVansData ] = React.useState<Van[]>([])
