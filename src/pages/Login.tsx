@@ -27,7 +27,7 @@ export default function Login(): JSX.Element {
         }));
     }
 
-    const message = location.state?.message
+    const message :string = location.state?.message
 
     return (
         <div className="login-container">
