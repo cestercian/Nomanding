@@ -23,12 +23,15 @@ function App() :JSX.Element {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout />}>
+
                     <Route index element={<Home />} />
                     <Route path="about" element={<About />} />
                     <Route path="login" element={<Login />}/>
                     <Route path="vans" element={<Vans />} />
                     <Route path="vans/:id" element={<VanDetails/>} />
+
                     <Route path="host" element={<HostLayout/>}>
+
                         <Route index element={<Dashboard/>}/>
                         <Route path="income" element={<Income/>}/>
                         <Route path="reviews" element={<Reviews/>}/>
@@ -38,8 +41,11 @@ function App() :JSX.Element {
                             <Route path="Pricing" element={<HostVanPricing/>}/>
                             <Route path="Photos" element={<HostVanPhotos/>}/>
                         </Route>
+
                     </Route>
+
                     <Route path="*" element={<NotFound />} />
+
                 </Route>
             </Routes>
         </BrowserRouter>
