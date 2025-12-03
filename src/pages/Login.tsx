@@ -1,19 +1,27 @@
-import React from "react"
+import React, {type JSX, useState} from "react";
 
-export default function Login() {
-    const [loginFormData, setLoginFormData] = React.useState({ email: "", password: "" })
+type LoginFormData = {
+    email: string;
+    password: string;
+};
 
-    function handleSubmit(e) {
-        e.preventDefault()
-        console.log(loginFormData)
+export default function Login(): JSX.Element {
+    const [loginFormData, setLoginFormData] = useState<LoginFormData>({
+        email: "",
+        password: "",
+    });
+
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
+        e.preventDefault();
+        console.log(loginFormData);
     }
 
-    function handleChange(e) {
-        const { name, value } = e.target
-        setLoginFormData(prev => ({
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
+        const { name, value } = e.target;
+        setLoginFormData((prev) => ({
             ...prev,
-            [name]: value
-        }))
+            [name]: value,
+        }));
     }
 
     return (
@@ -26,17 +34,19 @@ export default function Login() {
                     type="email"
                     placeholder="Email address"
                     value={loginFormData.email}
+                    required
                 />
+
                 <input
                     name="password"
                     onChange={handleChange}
                     type="password"
                     placeholder="Password"
                     value={loginFormData.password}
+                    required
                 />
-                <button>Log in</button>
+                <button type="submit">Log in</button>
             </form>
         </div>
-    )
-
+    );
 }
