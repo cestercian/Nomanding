@@ -1,5 +1,6 @@
 import React, {type JSX, useState} from "react";
 import {useLocation} from "react-router-dom";
+import {loginUser} from "../api/auth.ts";
 
 type LoginFormData = {
     email: string;
@@ -16,6 +17,8 @@ export default function Login(): JSX.Element {
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
         e.preventDefault();
+        loginUser(loginFormData)
+            .then( data => {console.log(data)})
         console.log(loginFormData);
     }
 

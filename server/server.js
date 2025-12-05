@@ -6,7 +6,7 @@ const PORT = 8000;
 
 const __dirname = import.meta.dirname;
 
-// TEMP mock user (same as Mirage would use)
+// TEMP mock user
 const user = { email: "b@b.com", password: "p123" };
 
 const server = http.createServer(async (req, res) => {
