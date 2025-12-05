@@ -23,11 +23,10 @@ export default function Login(): JSX.Element {
         setError(null)
         loginUser(loginFormData)
             .then( data => {console.log(data)})
-            .then(() => {setStatus("idle")})
             .catch( err => {
                 setError(err.message)
-                setStatus("idle")
             })
+            .finally(() => {setStatus("idle")})
         console.log(loginFormData);
     }
 
