@@ -64,7 +64,9 @@ export default function Login(): JSX.Element {
                     value={loginFormData.password}
                     required
                 />
-                <button type="submit" disabled={status === "submitting"} >Log in</button>
+                <button type="submit" disabled={status === "submitting"} >
+                    { status === "idle" ? "Log in" : "Logging in..."}
+                </button>
             </form>
         </div>
     );
