@@ -34,7 +34,7 @@ const server = http.createServer(async (req, res) => {
                     res,
                     200,
                     "application/json",
-                    JSON.stringify({ token: "loggedin" })
+                    JSON.stringify({ token: "logged In" })
                 );
             }
 
