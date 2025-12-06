@@ -3,7 +3,7 @@ import { type JSX} from "react";
 
 export default function Authentication():JSX.Element{
 
-    const isAuthenticated:boolean = false
+    const isAuthenticated:boolean = localStorage.getItem("loggedIn") === "loggedIn"
 
     if (!isAuthenticated){
         return <Navigate to={"login"} state={{ message : "You must Login first !" }}/>
