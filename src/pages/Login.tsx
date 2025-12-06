@@ -1,5 +1,5 @@
 import React, {type JSX, useState} from "react";
-import {useLocation} from "react-router-dom";
+import { useLocation, useNavigate} from "react-router-dom";
 import {loginUser} from "../api/auth.ts";
 
 type LoginFormData = {
@@ -16,13 +16,20 @@ export default function Login(): JSX.Element {
     const [error, setError] = useState(null)
 
     const location = useLocation()
+    const navigate = useNavigate()
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
         e.preventDefault();
         setStatus("submitting")
         setError(null)
         loginUser(loginFormData)
-            .then( data => {console.log(data)})
+            .then(data => {
+                console.log(data)
+                if (data.token === "logged In"){
+                    localStorage.setItem("loggedIn" , "loggedIn")
+                }
+            })
+            .then( ()=>{ navigate("/host")} )
             .catch( err => {
                 setError(err.message)
             })
