@@ -26,10 +26,11 @@ export default function Login(): JSX.Element {
             .then(data => {
                 console.log(data)
                 if (data.token === "logged In"){
-                    localStorage.setItem("loggedIn" , "true")
+                    localStorage.setItem("loggedIn" , "true");
+                    navigate("/host" , { replace : true} )
+
                 }
             })
-            .then( ()=>{ navigate("/host")} )
             .catch( err => {
                 setError(err.message)
             })

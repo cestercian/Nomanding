@@ -6,7 +6,7 @@ export default function Authentication():JSX.Element{
     const isAuthenticated:boolean = localStorage.getItem("loggedIn") === "true"
 
     if (!isAuthenticated){
-        return <Navigate to={"login"} state={{ message : "You must Login first !" }}/>
+        return <Navigate to={"login"} state={{ message : "You must Login first !" }} replace />
     }
 
     return <Outlet/>
