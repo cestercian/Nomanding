@@ -10,7 +10,7 @@ export default function Authentication():JSX.Element{
         return <Navigate to={"login"}
                          state={{
                              message : "You must Login first !" ,
-                             state : location.pathname
+                             from : location.pathname
                             }}
                          replace />
     }
