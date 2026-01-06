@@ -1,4 +1,6 @@
 import http from "node:http";
+import { fileURLToPath } from "node:url";
+import { dirname } from "node:path";
 import serveData from "./serveData.ts";
 import sendResponse from "./sendResponse.js";
 
@@ -8,7 +10,9 @@ const PORT = process.env.PORT || 8000;
 // Use environment variable for CORS origin, default to localhost for development
 const CORS_ORIGIN = process.env.CORS_ORIGIN || "http://localhost:5173";
 
-const __dirname = import.meta.dirname;
+// Get directory name (compatible with all Node.js versions)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // TEMP mock user
 const user = { email: "b@b.com", password: "p123" };
