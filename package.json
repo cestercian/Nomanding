@@ -9,8 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "build:server": "tsc -p tsconfig.node.json",
-    "server": "npx tsx server/server.js",
-    "start": "npx tsx server/server.js & npm run dev"
+    "server": "npx tsx server/server.ts",
+    "start": "npx tsx server/server.ts & npm run dev"
   },
   "dependencies": {
     "react": "^19.1.1",

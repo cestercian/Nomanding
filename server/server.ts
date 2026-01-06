@@ -1,7 +1,7 @@
 import http from "node:http";
 import { fileURLToPath } from "node:url";
 import { dirname } from "node:path";
-import serveData from "./serveData.ts";
+import serveData from "./serveData.js";
 import sendResponse from "./sendResponse.js";
 
 // Use environment variable for PORT, default to 8000 for local development
