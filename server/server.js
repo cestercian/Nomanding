@@ -2,7 +2,11 @@ import http from "node:http";
 import serveData from "./serveData.ts";
 import sendResponse from "./sendResponse.js";
 
-const PORT = 8000;
+// Use environment variable for PORT, default to 8000 for local development
+const PORT = process.env.PORT || 8000;
+
+// Use environment variable for CORS origin, default to localhost for development
+const CORS_ORIGIN = process.env.CORS_ORIGIN || "http://localhost:5173";
 
 const __dirname = import.meta.dirname;
 
@@ -14,7 +18,7 @@ const server = http.createServer(async (req, res) => {
     // --- CORS ---
     if (req.method === "OPTIONS") {
         res.statusCode = 204;
-        res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+        res.setHeader("Access-Control-Allow-Origin", CORS_ORIGIN);
         res.setHeader("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS");
         res.setHeader("Access-Control-Allow-Headers", "Content-Type");
         return res.end();
@@ -22,6 +26,9 @@ const server = http.createServer(async (req, res) => {
 
     // ---------------- LOGIN ----------------
     if (req.url === "/api/login" && req.method === "POST") {
+        // Add CORS headers
+        res.setHeader("Access-Control-Allow-Origin", CORS_ORIGIN);
+        
         let body = "";
 
         req.on("data", chunk => body += chunk.toString());
@@ -51,6 +58,7 @@ const server = http.createServer(async (req, res) => {
 
     // ---------- VANS ROUTES ----------
     if (req.url.startsWith("/api/vans")) {
+        res.setHeader("Access-Control-Allow-Origin", CORS_ORIGIN);
         return serveData(res, __dirname);
     }
 
