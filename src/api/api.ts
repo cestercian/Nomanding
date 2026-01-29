@@ -14,4 +14,3 @@ export default async function getVans() : Promise<Van[]> {
     }
     return await res.json();
 }
-
